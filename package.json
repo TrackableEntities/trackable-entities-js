@@ -1,6 +1,6 @@
 {
   "name": "trackable-entities-js",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "keywords": [],
   "main": "dist/trackable-entities-js.umd.js",
@@ -12,7 +12,7 @@
   "author": "Anthony Sneed <tony@tonysneed.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/TrackableEntities/trackable-entities-js.git"
   },
   "license": "MIT",
   "engines": {
@@ -27,7 +27,8 @@
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
-    "semantic-release-prepare": "ts-node tools/semantic-release-prepare"
+    "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
+    "prepush": "npm run test:prod && npm run build"
   },
   "jest": {
     "transform": {
@@ -72,7 +73,8 @@
     "tslint": "^5.7.0",
     "typedoc": "^0.7.1",
     "typescript": "^2.5.2",
-    "zone.js": "^0.8.17"
+    "zone.js": "^0.8.17",
+    "semantic-release": "^7.0.2"
   },
   "dependencies": {
     "observable-entities-js": "^1.0.0-beta2"
