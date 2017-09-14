@@ -1,4 +1,4 @@
-import { IObservableCollection } from 'observable-entities-js';
+import { IObservableCollection } from 'observable-entities';
 
 export interface ITrackableCollection<TEntity> extends IObservableCollection<TEntity> {
   tracking: boolean;

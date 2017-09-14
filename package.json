@@ -1,11 +1,18 @@
 {
-  "name": "trackable-entities-js",
-  "version": "0.0.0-development",
-  "description": "",
-  "keywords": [],
-  "main": "dist/trackable-entities-js.umd.js",
-  "module": "dist/trackable-entities-js.es2015.js",
-  "typings": "dist/types/trackable-entities-js.d.ts",
+  "name": "trackable-entities",
+  "version": "1.0.0-alpha.1",
+  "description": "Base classes that track change state when properties are updated and objects are added or removed objects from collections.",
+  "keywords": [
+    "change-tracking",
+    "observables",
+    "proxies",
+    "set",
+    "map",
+    "angular"
+  ],
+  "main": "dist/trackable-entities.umd.js",
+  "module": "dist/trackable-entities.es2015.js",
+  "typings": "dist/types/trackable-entities.d.ts",
   "files": [
     "dist"
   ],
@@ -21,7 +28,7 @@
   "scripts": {
     "lint": "tslint --type-check -p 'tsconfig.json' codeFrame 'src/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc && rollup -c && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal --exclude '**/*.spec.ts' src",
+    "build": "tsc && rollup -c && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal --exclude '**/*.spec.ts' --mode modules src",
     "start": "tsc-watch --onSuccess \"rollup -c\"",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -77,6 +84,6 @@
     "semantic-release": "^7.0.2"
   },
   "dependencies": {
-    "observable-entities-js": "^1.0.0-beta2"
+    "observable-entities": "^1.0.0-beta.1"
   }
 }

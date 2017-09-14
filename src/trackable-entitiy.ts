@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs/Subject';
 
-import { ObservableEntity } from 'observable-entities-js';
+import { ObservableEntity } from 'observable-entities';
 import { IPropertyNotifyInfo } from './property-notify-info';
 import { ITrackable } from './trackable';
 import { TrackingState } from './tracking-state';
@@ -42,7 +42,6 @@ export abstract class TrackableEntity extends ObservableEntity implements ITrack
     } else {
       const modifyIndex = this.modifyListeners.indexOf(this._modifyListener);
       if (modifyIndex >= 0) {
-        this._modifyListener.unsubscribe();
         this.modifyListeners.splice(modifyIndex, this.modifyListeners.length);
       }
     }

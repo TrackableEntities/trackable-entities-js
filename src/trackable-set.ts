@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs/Subject';
 
 import { IEntityNotifyInfo } from './entity-notify-info';
-import { ObservableSet } from 'observable-entities-js';
+import { ObservableSet } from 'observable-entities';
 import { IPropertyNotifyInfo } from './property-notify-info';
 import { ITrackable } from './trackable';
 import { ITrackableCollection } from './trackable-collection';

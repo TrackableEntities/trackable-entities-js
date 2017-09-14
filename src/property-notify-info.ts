@@ -1,4 +1,4 @@
-import { INotifyInfo } from 'observable-entities-js';
+import { INotifyInfo } from 'observable-entities';
 
 export interface IPropertyNotifyInfo extends INotifyInfo {
   key?: string;

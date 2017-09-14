@@ -43,12 +43,10 @@ export abstract class TrackableHelper {
     } else {
       const addIndex = trackable.addListeners.indexOf(addListener);
       if (addIndex >= 0) {
-        addListener.unsubscribe();
         trackable.addListeners.splice(addIndex, trackable.addListeners.length);
       }
       const removeIndex = trackable.removeListeners.indexOf(removeListener);
       if (removeIndex >= 0) {
-        removeListener.unsubscribe();
         deletedEntities.clear();
         trackable.removeListeners.splice(addIndex, trackable.removeListeners.length);
       }

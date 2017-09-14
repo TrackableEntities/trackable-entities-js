@@ -4,7 +4,7 @@ import sourceMaps from 'rollup-plugin-sourcemaps'
 const pkg = require('./package.json')
 const camelCase = require('lodash.camelcase')
 
-const libraryName = 'trackable-entities-js'
+const libraryName = 'trackable-entities'
 
 export default {
   entry: `compiled/${libraryName}.js`,

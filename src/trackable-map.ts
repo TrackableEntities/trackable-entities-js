@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs/Subject';
 
 import { IEntityNotifyInfo } from './entity-notify-info';
-import { ObservableMap } from 'observable-entities-js';
+import { ObservableMap } from 'observable-entities';
 import { IPropertyNotifyInfo } from './property-notify-info';
 import { ITrackableCollection } from './trackable-collection';
 import { TrackableEntity } from './trackable-entitiy';
