@@ -7,12 +7,12 @@ describe('TrackableSet', () => {
   let trackableSet: TrackableSet<Product>;
 
   beforeEach(() => {
-    const foods = [
+    const products = [
       new Product(1, 'Bacon', 1),
       new Product(2, 'Lettuce', 2),
       new Product(3, 'Tomatoes', 3),
     ];
-    trackableSet = new TrackableSet<Product>(...foods);
+    trackableSet = new TrackableSet<Product>(...products);
   });
 
   it('should be created', () => {
@@ -27,13 +27,13 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = new Product(4, 'Carrots', 4);
+    const product = new Product(4, 'Carrots', 4);
 
     // Act
-    trackableSet.add(food);
+    trackableSet.add(product);
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Added);
+    expect(product.trackingState).toEqual(TrackingState.Added);
     done();
   });
 
@@ -41,14 +41,14 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = new Product(4, 'Carrots', 4);
+    const product = new Product(4, 'Carrots', 4);
 
     // Act
     trackableSet.tracking = false;
-    trackableSet.add(food);
+    trackableSet.add(product);
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Unchanged);
+    expect(product.trackingState).toEqual(TrackingState.Unchanged);
     done();
   });
 
@@ -56,13 +56,13 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
-    trackableSet.delete(food);
+    trackableSet.delete(product);
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Deleted);
+    expect(product.trackingState).toEqual(TrackingState.Deleted);
     done();
   });
 
@@ -70,14 +70,14 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
     trackableSet.tracking = false;
-    trackableSet.delete(food);
+    trackableSet.delete(product);
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Unchanged);
+    expect(product.trackingState).toEqual(TrackingState.Unchanged);
     done();
   });
 
@@ -85,15 +85,15 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
-    trackableSet.delete(food);
+    trackableSet.delete(product);
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Deleted);
+    expect(product.trackingState).toEqual(TrackingState.Deleted);
     const deletedEntities = [...(trackableSet as any).deletedEntities];
-    expect(deletedEntities[0]).toBe(food);
+    expect(deletedEntities[0]).toBe(product);
     done();
   });
 
@@ -101,14 +101,14 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
-    trackableSet.delete(food);
+    trackableSet.delete(product);
     trackableSet.tracking = false;
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Deleted);
+    expect(product.trackingState).toEqual(TrackingState.Deleted);
     const deletedEntities = [...(trackableSet as any).deletedEntities];
     expect(deletedEntities.length).toEqual(0);
     done();
@@ -118,13 +118,13 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
-    food.productName = 'Peas';
+    product.productName = 'Peas';
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Modified);
+    expect(product.trackingState).toEqual(TrackingState.Modified);
     done();
   });
 
@@ -132,13 +132,13 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
-    food.productName = food.productName;
+    product.productName = product.productName;
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Unchanged);
+    expect(product.trackingState).toEqual(TrackingState.Unchanged);
     done();
   });
 
@@ -146,14 +146,14 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
     trackableSet.tracking = false;
-    food.productName = 'Peas';
+    product.productName = 'Peas';
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Unchanged);
+    expect(product.trackingState).toEqual(TrackingState.Unchanged);
     done();
   });
 
@@ -161,17 +161,17 @@ describe('TrackableSet', () => {
 
     // Arrange
     trackableSet.tracking = true;
-    const food = [...trackableSet][0];
+    const product = [...trackableSet][0];
 
     // Act
-    food.productName = 'Peas';
-    food.unitPrice = 5;
+    product.productName = 'Peas';
+    product.unitPrice = 5;
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Modified);
-    expect(food.modifiedProperties.size).toEqual(2);
-    expect(food.modifiedProperties.has('productName')).toBeTruthy();
-    expect(food.modifiedProperties.has('unitPrice')).toBeTruthy();
+    expect(product.trackingState).toEqual(TrackingState.Modified);
+    expect(product.modifiedProperties.size).toEqual(2);
+    expect(product.modifiedProperties.has('productName')).toBeTruthy();
+    expect(product.modifiedProperties.has('unitPrice')).toBeTruthy();
     done();
   });
 });

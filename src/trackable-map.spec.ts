@@ -27,13 +27,13 @@ describe('TrackableMap', () => {
 
     // Arrange
     trackableMap.tracking = true;
-    const food = new Product(4, 'Carrots', 4);
+    const product = new Product(4, 'Carrots', 4);
 
     // Act
-    trackableMap.add(food.productName, food);
+    trackableMap.add(product.productName, product);
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Added);
+    expect(product.trackingState).toEqual(TrackingState.Added);
     done();
   });
 
@@ -41,14 +41,14 @@ describe('TrackableMap', () => {
 
     // Arrange
     trackableMap.tracking = true;
-    const food = new Product(5, 'Carrots', 4);
+    const product = new Product(5, 'Carrots', 4);
 
     // Act
     trackableMap.tracking = false;
-    trackableMap.add(food.productName, food);
+    trackableMap.add(product.productName, product);
 
     // Assert
-    expect(food.trackingState).toEqual(TrackingState.Unchanged);
+    expect(product.trackingState).toEqual(TrackingState.Unchanged);
     done();
   });
 
