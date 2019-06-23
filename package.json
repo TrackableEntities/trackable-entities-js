@@ -28,7 +28,7 @@
     "npm": ">=6.0"
   },
   "scripts": {
-    "lint": "tslint --type-check -p 'tsconfig.json' codeFrame 'src/**/*.ts'",
+    "lint": "tslint -p 'tsconfig.json' 'src/**/*.ts'",
     "prebuild": "rimraf dist",
     "build": "tsc && rollup -c && typedoc --out dist/docs --target es6 --theme minimal --exclude '**/*.spec.ts' --mode modules src",
     "start": "tsc-watch --onSuccess \"rollup -c\"",
