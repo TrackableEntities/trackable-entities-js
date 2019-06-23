@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import { ObservableEntity } from 'observable-entities';
 import { IPropertyNotifyInfo } from './property-notify-info';
