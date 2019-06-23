@@ -2,21 +2,35 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Tests",
+      "name": "Tests - Current File",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
       "sourceMaps": true,
-      "runtimeArgs": [
-        "-i"
+      "args": [
+        "${fileBasenameNoExtension}",
+        "--config",
+        "jest.config.js"
       ],
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "outFiles": [
-        "${workspaceRoot}/dist/**/*"
-      ],
-      "cwd": "${workspaceRoot}"
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test - All Files",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      }
     }
   ]
 }
