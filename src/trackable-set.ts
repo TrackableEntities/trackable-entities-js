@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import { IEntityNotifyInfo } from './entity-notify-info';
 import { ObservableSet } from 'observable-entities';
