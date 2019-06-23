@@ -10,11 +10,12 @@
     "map",
     "angular"
   ],
-  "main": "dist/trackable-entities.umd.js",
-  "module": "dist/trackable-entities.es2015.js",
+  "main": "dist/bundles/trackable-entities.umd.js",
+  "module": "dist/bundles/trackable-entities.es2015.js",
   "typings": "dist/types/trackable-entities.d.ts",
   "files": [
-    "dist"
+    "dist/bundles",
+    "dist/types"
   ],
   "author": "Anthony Sneed <tony@tonysneed.com>",
   "repository": {
@@ -23,37 +24,20 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.5",
+    "npm": ">=6.0"
   },
   "scripts": {
     "lint": "tslint --type-check -p 'tsconfig.json' codeFrame 'src/**/*.ts'",
     "prebuild": "rimraf dist",
     "build": "tsc && rollup -c && typedoc --out dist/docs --target es6 --theme minimal --exclude '**/*.spec.ts' --mode modules src",
     "start": "tsc-watch --onSuccess \"rollup -c\"",
-    "test": "jest",
+    "test": "jest -c ./jest.config.js",
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "prepush": "npm run test:prod && npm run build"
-  },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "modulePathIgnorePatterns": [
-      "models"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
-    ]
   },
   "dependencies": {
     "observable-entities": "^1.0.0"
